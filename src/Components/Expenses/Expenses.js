@@ -4,7 +4,7 @@ import './Expenses.css';
 import Card from '../UI/Card';
 import ExpensesFilter from './ExpensesFilter';
 
-const Expenses = ({items}) => {
+const Expenses = ({filteredExpenses}) => {
     const [expensesFilter, setExpensesFilter] = useState('');
 
     const selectExpenseFilter = (selectedFilter) => {
@@ -13,15 +13,16 @@ const Expenses = ({items}) => {
 
     return (
         <div>
-            <ExpensesFilter selected={expensesFilter} onSelectExpensesFilter={selectExpenseFilter}/>
             <Card className='expenses'>
-                {items.map((item, index) => {
+                <ExpensesFilter selected={expensesFilter} onSelectExpensesFilter={selectExpenseFilter}/>
+                {filteredExpenses.length === 0 ? <p>No expenses found.</p> : 
+                filteredExpenses.map((expense, index) => {
                     return (
                         <ExpenseItem 
-                        key={item + index}
-                        title={item.title} 
-                        amount={item.amount} 
-                        date={item.date}/>
+                        key={expense + index}
+                        title={expense.title} 
+                        amount={expense.amount} 
+                        date={expense.date}/>
                     );
                 })}
             </Card>
