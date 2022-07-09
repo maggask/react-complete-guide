@@ -1,9 +1,9 @@
 import React from 'react';
 import './ExpensesFilter.css';
 
-const ExpensesFilter = ({onSelectExpensesFilter}) => {
+const ExpensesFilter = ({onChangeFilter}) => {
     const expensesFilterChangeHandler = (event) => {
-        onSelectExpensesFilter(event.target.value);
+        onChangeFilter(event.target.value);
     }
 
     return (
