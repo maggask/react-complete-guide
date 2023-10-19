@@ -1,11 +1,17 @@
 import React from "react";
 import ExpenseItem from "./ExpenseItem";
+import "./ExpensesList.css";
 
 const ExpensesList = ({ items }) => {
   return (
-    <ul>
+    <ul className="expenses-list">
       {items.map((item) => (
-        <ExpenseItem date={item.date} title={item.title} amount={item.amount} />
+        <ExpenseItem
+          key={item.id}
+          date={item.date}
+          title={item.title}
+          amount={item.amount}
+        />
       ))}
     </ul>
   );
